@@ -1,8 +1,23 @@
-# net_http-go-template
+# net/http backend template for Create Go App CLI
 
-Backend template with built-in `net/http` (pkg/net/http).
+<img align="right" width="256px" src="https://golang.org/lib/godoc/images/go-logo-blue.svg" alt="Golang logo" />
 
-## Project structure
+Package `net` provides a portable interface for network I/O, including TCP/IP, UDP, domain name resolution, and Unix domain sockets. Although the package provides access to low-level networking primitives.
+
+Package `net/http` provides HTTP client and server implementations.
+
+- net/http ([docs](https://golang.org/pkg/net/http/))
+
+## Requirements
+
+- Create Go App CLI `0.x` ([create-go-app/cli](https://github.com/create-go-app/cli))
+- Go `1.11+` with Go Modules ([golang/download](https://golang.org/dl/))
+
+### Optional
+
+- Docker `19.x` ([docker/onboarding](https://hub.docker.com/?overlay=onboarding))
+
+## Template structure
 
 ```console
 foo@bar:backend$ tree .
