@@ -2,14 +2,15 @@ package main
 
 import (
 	"github.com/create-go-app/net_http-go-template/internal/apiserver"
-	"github.com/create-go-app/net_http-go-template/internal/checker"
 	"github.com/joho/godotenv"
+	"log"
 )
 
 func init() {
 	// Load values from .env
-	err := godotenv.Load()
-	checker.IsError(err, "Not found .env file in project root folder!")
+	if err := godotenv.Load(); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
@@ -18,5 +19,9 @@ func main() {
 
 	// Create new server
 	server := apiserver.New(config)
-	checker.IsError(server.Start())
+
+	// Start server
+	if err := server.Start(); err != nil {
+		log.Fatal(err)
+	}
 }

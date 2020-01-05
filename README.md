@@ -5,22 +5,29 @@ Backend template with built-in `net/http` (pkg/net/http).
 ## Project structure
 
 ```console
-foo@bar:~$ tree .
+foo@bar:backend$ tree .
 .
-├── cmd
-│   ├── checker
-│   │   └── checker.go
-│   ├── config
-│   │   └── config.go
-│   ├── debugmode
-│   │   └── debugmode.go
-│   └── routes
-│       └── routes.go
-├── LICENSE
-├── README.md
+├── .dockerignore
+├── .editorconfig
+├── .env.example
+├── .gitignore
 ├── Dockerfile
 ├── Makefile
+├── README.md
+├── LICENSE
 ├── go.mod
 ├── go.sum
-└── main.go
+├── cmd
+│   └── apiserver
+│       └── main.go
+└── internal
+    └── apiserver
+        ├── apiserver.go
+        ├── checker.go
+        ├── config.go
+        ├── logger.go
+        ├── middleware.go
+        └── routes.go
+
+4 directories, 18 files
 ```

@@ -16,3 +16,6 @@
 
 # Dot env file
 .env
+
+# Build
+app/

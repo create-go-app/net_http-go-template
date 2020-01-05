@@ -1,9 +1,11 @@
 .PHONY: run
 
 run:
-	go run ./*.go
+	go run ./cmd/apiserver/*.go
 
 build:
-	go build -v ./main.go
+	rm -rf ./app \
+	&& go build -o ./app/apiserver ./cmd/apiserver/*.go
+	@echo "[✔️] Backend was builded!"
 
 .DEFAULT_GOAL := run
