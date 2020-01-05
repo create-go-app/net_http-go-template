@@ -1,13 +1,16 @@
 package apiserver
 
 import (
-	"encoding/json"
 	"net/http"
 	"os"
 	"path/filepath"
 
 	"github.com/gorilla/mux"
+	jsoniter "github.com/json-iterator/go"
 )
+
+// Define JSON iterator
+var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 // frontendHandler implements the http.Handler interface, so we can use it
 // to respond to HTTP requests. The path to the static directory and
