@@ -6,7 +6,7 @@ Package `net` provides a portable interface for network I/O, including TCP/IP, U
 
 Package `net/http` provides HTTP client and server implementations.
 
-- net/http ([docs](https://golang.org/pkg/net/http/))
+- [Documentation](https://golang.org/pkg/net/http/)
 
 ## Requirements
 
