@@ -1,4 +1,4 @@
-package config
+package apiserver
 
 import (
 	"os"
@@ -9,7 +9,7 @@ import (
 // Config struct for app config
 type Config struct {
 	Server            server
-	DebugMode         bool
+	LogLevel          string
 	FrontendBuildPath string
 }
 
@@ -21,8 +21,8 @@ type server struct {
 	IdleTimeout  int
 }
 
-// Load returns a new Config struct
-func Load() *Config {
+// NewConfig returns a new Config struct
+func NewConfig() *Config {
 	return &Config{
 		Server: server{
 			Host:         getEnv("HOST", "127.0.0.1"),
@@ -31,7 +31,7 @@ func Load() *Config {
 			WriteTimeout: getEnvAsInt("WRITE_TIMEOUT", 10),
 			IdleTimeout:  getEnvAsInt("IDLE_TIMEOUT", 15),
 		},
-		DebugMode:         getEnvAsBool("DEBUG_MODE", true),
+		LogLevel:          getEnv("LOG_LEVEL", "debug"),
 		FrontendBuildPath: getEnv("FRONTEND_BUILD_PATH", ""),
 	}
 }

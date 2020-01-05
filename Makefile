@@ -2,4 +2,8 @@
 
 run:
 	go run ./*.go
-	@echo "[✔️] Backend is running!"
+
+build:
+	go build -v ./main.go
+
+.DEFAULT_GOAL := run

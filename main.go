@@ -1,15 +1,8 @@
 package main
 
 import (
-	"net/http"
-	"os"
-	"time"
-
-	"github.com/create-go-app/net_http-go-template/cmd/checker"
-	"github.com/create-go-app/net_http-go-template/cmd/config"
-	"github.com/create-go-app/net_http-go-template/cmd/debugmode"
-	"github.com/create-go-app/net_http-go-template/cmd/routes"
-	"github.com/gorilla/mux"
+	"github.com/create-go-app/net_http-go-template/internal/apiserver"
+	"github.com/create-go-app/net_http-go-template/internal/checker"
 	"github.com/joho/godotenv"
 )
 
@@ -20,30 +13,10 @@ func init() {
 }
 
 func main() {
-	// Load config
-	c := config.Load()
+	// Create new config
+	config := apiserver.NewConfig()
 
-	// Define gorilla/mux router and app routes
-	r := mux.NewRouter()
-	r.HandleFunc("/api/index", routes.Index)
-
-	// If app have frontend folder with builded bundle
-	if _, err := os.Stat(c.FrontendBuildPath); !os.IsNotExist(err) {
-		r.PathPrefix("/").Handler(http.StripPrefix(
-			c.FrontendBuildPath,
-			http.FileServer(http.Dir(c.FrontendBuildPath)),
-		))
-	}
-
-	// Define net/http server with options
-	server := &http.Server{
-		Addr:         c.Server.Host + ":" + c.Server.Port,
-		Handler:      debugmode.Enable(r, c.DebugMode),
-		ReadTimeout:  time.Duration(c.Server.ReadTimeout) * time.Second,
-		WriteTimeout: time.Duration(c.Server.WriteTimeout) * time.Second,
-		IdleTimeout:  time.Duration(c.Server.IdleTimeout) * time.Second,
-	}
-
-	// Start server
-	checker.IsError(server.ListenAndServe())
+	// Create new server
+	server := apiserver.New(config)
+	checker.IsError(server.Start())
 }
