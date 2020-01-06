@@ -54,6 +54,14 @@ foo@bar:backend$ tree .
 4 directories, 18 files
 ```
 
+### TODO (ASAP list)
+
+- Add more API endpoints
+- Add tests
+- Add jmoiron/sqlx (Postgres)
+- Add markbates/pkger
+- ...
+
 ## Developers
 
 - Idea and active development by [Vic Shóstak](https://github.com/koddr) (aka Koddr).
