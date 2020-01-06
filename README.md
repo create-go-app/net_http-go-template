@@ -10,12 +10,19 @@ Package `net/http` provides HTTP client and server implementations.
 
 ## Requirements
 
-- Create Go App CLI `0.x` ([create-go-app/cli](https://github.com/create-go-app/cli))
-- Go `1.11+` with Go Modules ([golang/download](https://golang.org/dl/))
+- Create Go App CLI `v0.x` ([create-go-app/cli](https://github.com/create-go-app/cli))
+- Go `v1.11+` with Go Modules ([golang/download](https://golang.org/dl/))
 
 ### Optional
 
 - Docker `19.x` ([docker/onboarding](https://hub.docker.com/?overlay=onboarding))
+
+## Used packages
+
+-	[joho/godotenv](https://github.com/joho/godotenv) `v1.3.0`
+- [zap](https://go.uber.org/zap) `v1.13.0`
+- [gorilla/mux](https://github.com/gorilla/mux) `v1.7.3`
+- [json-iterator/go](https://github.com/json-iterator/go) `v1.1.9`
 
 ## Template structure
 
