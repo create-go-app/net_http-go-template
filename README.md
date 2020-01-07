@@ -1,4 +1,4 @@
-# net/http backend template for Create Go App CLI
+<h1 align="center">net/http backend template<br/>for <a href="https://github.com/create-go-app">Create Go App CLI</a></h1>
 
 <img align="right" width="256px" src="https://golang.org/lib/godoc/images/go-logo-blue.svg" alt="Golang logo" />
 
