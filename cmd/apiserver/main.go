@@ -1,21 +1,27 @@
 package main
 
 import (
-	"github.com/create-go-app/net_http-go-template/internal/apiserver"
-	"github.com/joho/godotenv"
+	"flag"
 	"log"
+
+	"github.com/create-go-app/net_http-go-template/internal/apiserver"
+)
+
+var (
+	configPath string
 )
 
 func init() {
-	// Load values from .env
-	if err := godotenv.Load(); err != nil {
-		log.Fatal(err)
-	}
+	// Looking for flags
+	flag.StringVar(&configPath, "config-path", "configs/apiserver.yml", "path to config file")
 }
 
 func main() {
+	// Parse flags
+	flag.Parse()
+
 	// Create new config
-	config := apiserver.NewConfig()
+	config := apiserver.NewConfig(configPath)
 
 	// Create new server
 	server := apiserver.New(config)

@@ -40,9 +40,9 @@ func (s *APIServer) Start() error {
 	server := &http.Server{
 		Addr:         s.config.Server.Host + ":" + s.config.Server.Port,
 		Handler:      s.router,
-		ReadTimeout:  time.Duration(s.config.Server.ReadTimeout) * time.Second,
-		WriteTimeout: time.Duration(s.config.Server.WriteTimeout) * time.Second,
-		IdleTimeout:  time.Duration(s.config.Server.IdleTimeout) * time.Second,
+		ReadTimeout:  time.Duration(s.config.Server.Timeout.Read) * time.Second,
+		WriteTimeout: time.Duration(s.config.Server.Timeout.Write) * time.Second,
+		IdleTimeout:  time.Duration(s.config.Server.Timeout.Idle) * time.Second,
 	}
 
 	// Start server

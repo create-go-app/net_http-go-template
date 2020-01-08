@@ -13,7 +13,7 @@ func Logger(config *Config) *zap.Logger {
 	level := zap.NewAtomicLevel()
 
 	// Set log level from .env file
-	switch config.LogLevel {
+	switch config.Logging.Level {
 	case "debug":
 		level.SetLevel(zap.DebugLevel)
 	case "warn":

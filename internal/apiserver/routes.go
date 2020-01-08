@@ -27,9 +27,9 @@ func (s *APIServer) Router() {
 	s.router.HandleFunc("/api/index", s.handleIndex()).Methods(http.MethodGet)
 
 	// Frontend route
-	if s.config.FrontendBuildPath != "" {
+	if s.config.Static.Path != "" {
 		frontend := &frontendHandler{
-			staticPath: s.config.FrontendBuildPath,
+			staticPath: s.config.Static.Path,
 			indexPath:  "index.html",
 		}
 		s.router.PathPrefix("/").Handler(frontend)

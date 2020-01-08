@@ -1,81 +1,57 @@
 package apiserver
 
 import (
+	"log"
 	"os"
-	"strconv"
-	"strings"
+
+	"gopkg.in/yaml.v3"
 )
 
 // Config struct for app config
 type Config struct {
-	Server            server
-	LogLevel          string
-	FrontendBuildPath string
-}
-
-type server struct {
-	Host         string
-	Port         string
-	WriteTimeout int
-	ReadTimeout  int
-	IdleTimeout  int
+	Server struct {
+		Host    string `yaml:"host"`
+		Port    string `yaml:"port"`
+		Timeout struct {
+			Write int `yaml:"write"`
+			Read  int `yaml:"read"`
+			Idle  int `yaml:"idle"`
+		} `yaml:"timeout"`
+	} `yaml:"server"`
+	Database struct {
+		Host     string `yaml:"host"`
+		Port     string `yaml:"port"`
+		Username string `yaml:"user"`
+		Password string `yaml:"pass"`
+	} `yaml:"database"`
+	Logging struct {
+		Level string `yaml:"level"`
+	} `yaml:"logging"`
+	Static struct {
+		Path string `yaml:"path"`
+	} `yaml:"static"`
 }
 
 // NewConfig returns a new Config struct
-func NewConfig() *Config {
-	return &Config{
-		Server: server{
-			Host:         getEnv("HOST", "127.0.0.1"),
-			Port:         getEnv("PORT", "8080"),
-			ReadTimeout:  getEnvAsInt("READ_TIMEOUT", 5),
-			WriteTimeout: getEnvAsInt("WRITE_TIMEOUT", 10),
-			IdleTimeout:  getEnvAsInt("IDLE_TIMEOUT", 15),
-		},
-		LogLevel:          getEnv("LOG_LEVEL", "debug"),
-		FrontendBuildPath: getEnv("FRONTEND_BUILD_PATH", ""),
+func NewConfig(configPath string) *Config {
+	// Define config structure
+	c := &Config{}
+
+	// Open config file
+	f, err := os.Open(configPath)
+	if err != nil {
+		log.Fatal(err)
 	}
-}
+	defer f.Close()
 
-// Simple helper function to read an environment or return a default value
-func getEnv(key string, defaultValue string) string {
-	if value, exists := os.LookupEnv(key); exists {
-		return value
-	}
+	// Init new YAML decode
+	d := yaml.NewDecoder(f)
 
-	return defaultValue
-}
-
-// Simple helper function to read an environment variable into integer or return a default value
-func getEnvAsInt(name string, defaultValue int) int {
-	checkValue := getEnv(name, "")
-
-	if value, err := strconv.Atoi(checkValue); err == nil {
-		return value
+	// Start YAML decoding from file
+	if err := d.Decode(&c); err != nil {
+		log.Fatal(err)
 	}
 
-	return defaultValue
-}
-
-// Helper to read an environment variable into a bool or return default value
-func getEnvAsBool(name string, defaultValue bool) bool {
-	checkValue := getEnv(name, "")
-
-	if val, err := strconv.ParseBool(checkValue); err == nil {
-		return val
-	}
-
-	return defaultValue
-}
-
-// Helper to read an environment variable into a string slice or return default value
-func getEnvAsSlice(name string, defaultValue []string, sep string) []string {
-	checkValue := getEnv(name, "")
-
-	if checkValue == "" {
-		return defaultValue
-	}
-
-	val := strings.Split(checkValue, sep)
-
-	return val
+	// Default return
+	return c
 }

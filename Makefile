@@ -5,7 +5,8 @@ run:
 
 build:
 	rm -rf ./app \
-	&& go build -o ./app/apiserver ./cmd/apiserver/*.go
+	&& CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
+	go build -o ./app/apiserver ./cmd/apiserver/*.go
 	@echo "[✔️] Backend was builded!"
 
 .DEFAULT_GOAL := run
