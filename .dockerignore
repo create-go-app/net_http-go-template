@@ -1,6 +1,10 @@
+.dockerignore
 .editorconfig
 .gitignore
+Dockerfile
 Makefile
 LICENSE
 app/
+cmd/apiserver/*_test.go
+internal/apiserver/*_test.go
 *.md
