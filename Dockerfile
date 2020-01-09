@@ -1,6 +1,6 @@
 FROM golang:alpine AS builder
 
-WORKDIR /app
+WORKDIR /backend
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
@@ -8,5 +8,5 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o apiserver cmd/apiserver/*.
 
 FROM scratch
 
-COPY --from=builder ["/app/apiserver", "/app/configs/apiserver.yml", "/app/"]
-ENTRYPOINT ["/app/apiserver", "-config-path", "/app/apiserver.yml"]
+COPY --from=builder ["/backend/apiserver", "/backend/configs/apiserver.yml", "/backend/"]
+ENTRYPOINT ["/backend/apiserver", "-config-path", "/backend/apiserver.yml"]
