@@ -1,5 +1,7 @@
 FROM golang:alpine AS builder
 
+LABEL maintainer="Vic Shóstak <truewebartisans@gmail.com>"
+
 WORKDIR /backend
 COPY go.mod go.sum ./
 RUN go mod download
