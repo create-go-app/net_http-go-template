@@ -4,17 +4,17 @@ NOCOLOR=\033[0m
 
 # Define app variables
 NAME=apiserver
-BUILD=./app
+BUILD=./build
 
 .PHONY: clean
 
 clean:
 	@rm -rf $(BUILD)
-	@echo "$(GREEN)[OK]$(NOCOLOR) App was cleaned!"
+	@echo "$(GREEN)[OK]$(NOCOLOR) App backend was cleaned!"
 
 test:
 	@go test ./...
-	@echo "$(GREEN)[OK]$(NOCOLOR) App was tested!"
+	@echo "$(GREEN)[OK]$(NOCOLOR) App backend was tested!"
 
 run:
 	@go run ./...
