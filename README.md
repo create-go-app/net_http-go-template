@@ -60,7 +60,7 @@ foo@bar:backend$ tree .
 - Add tests
 - Add jmoiron/sqlx (Postgres)
 - ...
-- You're feel free to send ideas to [issue](issues/new/choose) 😉
+- You're feel free to send ideas to [issue](https://github.com/create-go-app/net_http-go-template/issues/new/choose) 😉
 
 ## Developers
 
