@@ -1,12 +1,29 @@
-.PHONY: run
+# Define colors
+GREEN=\033[0;32m
+NOCOLOR=\033[0m
+
+# Define app variables
+NAME=apiserver
+BUILD=./app
+
+.PHONY: clean
+
+clean:
+	@rm -rf $(BUILD)
+	@echo "$(GREEN)[OK]$(NOCOLOR) App was cleaned!"
+
+test:
+	@go test ./...
+	@echo "$(GREEN)[OK]$(NOCOLOR) App was tested!"
 
 run:
-	go run ./cmd/apiserver/*.go
+	@go run ./...
 
-build:
-	rm -rf ./app \
-	&& CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 \
-	go build -o ./app/apiserver ./cmd/apiserver/*.go
-	@echo "[✔️] Backend was builded!"
-
-.DEFAULT_GOAL := run
+build: clean
+	@CGO_ENABLED=0 GOARCH=amd64
+	@GOOS=darwin go build -o $(BUILD)/darwin/$(NAME) ./cmd/$(NAME)/...
+	@echo "$(GREEN)[OK]$(NOCOLOR) App backend for macOS x64 was builded!"
+	@GOOS=linux go build -o $(BUILD)/linux/$(NAME) ./cmd/$(NAME)/...
+	@echo "$(GREEN)[OK]$(NOCOLOR) App backend for GNU/Linux x64 was builded!"
+	@GOOS=windows go build -ldflags="-H windowsgui" -o $(BUILD)/windows/$(NAME).exe ./cmd/$(NAME)/...
+	@echo "$(GREEN)[OK]$(NOCOLOR) App backend for MS Windows x64 was builded!"

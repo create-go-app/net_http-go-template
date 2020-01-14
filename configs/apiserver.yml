@@ -20,4 +20,4 @@ logging:
 
 # Static files config
 static:
-  path: ./static
+  path: /static

@@ -10,10 +10,7 @@ func (s *APIServer) IsError(err error) {
 	// If got error
 	if err != nil {
 		// Show zap logger error
-		s.logger.Error(
-			"Error",
-			zap.Error(err),
-		)
+		s.logger.Error("Error", zap.Error(err))
 
 		// Exit with status 1
 		os.Exit(1)

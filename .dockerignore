@@ -1,10 +1,14 @@
+# Files
 .dockerignore
 .editorconfig
 .gitignore
 Dockerfile
 Makefile
 LICENSE
+*.md
+
+# Folders
+.github/
 app/
 cmd/apiserver/*_test.go
 internal/apiserver/*_test.go
-*.md
