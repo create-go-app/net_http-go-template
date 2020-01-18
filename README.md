@@ -19,7 +19,7 @@ Package `net/http` provides HTTP client and server implementations.
 
 ## Used packages
 
-- [joho/godotenv](https://github.com/joho/godotenv) `v1.3.0`
+- [go-yaml/yaml](https://github.com/go-yaml/yaml) `v3.0.0`
 - [zap](https://go.uber.org/zap) `v1.13.0`
 - [gorilla/mux](https://github.com/gorilla/mux) `v1.7.3`
 - [json-iterator/go](https://github.com/json-iterator/go) `v1.1.9`
