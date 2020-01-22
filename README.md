@@ -27,21 +27,23 @@ Package `net/http` provides HTTP client and server implementations.
 ## Template structure
 
 ```console
-foo@bar:backend$ tree .
+foo@bar:~/net_http-go-template$ tree .
 .
 ├── .dockerignore
 ├── .editorconfig
-├── .env.example
+├── .prettierignore
 ├── .gitignore
 ├── Dockerfile
 ├── Makefile
-├── README.md
 ├── LICENSE
+├── README.md
 ├── go.mod
 ├── go.sum
 ├── cmd
 │   └── apiserver
 │       └── main.go
+├── configs
+│   └── apiserver.yml
 └── internal
     └── apiserver
         ├── apiserver.go
@@ -51,7 +53,38 @@ foo@bar:backend$ tree .
         ├── middleware.go
         └── routes.go
 
-4 directories, 18 files
+5 directories, 17 files
+```
+
+### Configs
+
+All server/database/logging/static configs included in one YAML file `./configs/apiserver.yml`:
+
+```yaml
+# Server config
+server:
+    host: 127.0.0.1
+    port: 8080
+    timeout:
+        read: 15
+        write: 10
+        idle: 5
+
+# Database config
+database:
+    host: 127.0.0.1
+    port: 5432
+    username: postgres
+    password: 1234
+
+# Logging config
+logging:
+    level: debug
+
+# Static files config
+static:
+    path: /static
+
 ```
 
 ### TODO (ASAP list)
