@@ -21,7 +21,7 @@ type frontendHandler struct {
 	indexPath  string
 }
 
-// Router function for create router
+// Router method for create router
 func (s *APIServer) Router() {
 	// API routes with allowed methods
 	s.router.HandleFunc("/api/index", s.handleIndex()).Methods(http.MethodGet)
@@ -42,7 +42,7 @@ func (s *APIServer) Router() {
 	)
 }
 
-// handleIndex function handler for route /api/index
+// handleIndex method for handle /api/index route
 func (s *APIServer) handleIndex() http.HandlerFunc {
 	// Optional struct
 	type request struct{}

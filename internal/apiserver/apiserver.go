@@ -8,14 +8,14 @@ import (
 	"go.uber.org/zap"
 )
 
-// APIServer ...
+// APIServer struct
 type APIServer struct {
 	config *Config
 	logger *zap.Logger
 	router *mux.Router
 }
 
-// New ...
+// New method for init new server instance
 func New(config *Config) *APIServer {
 	return &APIServer{
 		config: config,
@@ -24,7 +24,7 @@ func New(config *Config) *APIServer {
 	}
 }
 
-// Start ...
+// Start method for start new server
 func (s *APIServer) Start() error {
 	// Starting message
 	s.logger.Info(

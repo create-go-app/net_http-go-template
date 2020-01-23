@@ -17,7 +17,7 @@ test:
 	@echo "$(GREEN)[OK]$(NOCOLOR) App backend was tested!"
 
 run:
-	@go run ./...
+	@go run ./cmd/$(NAME)/...
 
 build: clean
 	@CGO_ENABLED=0 GOARCH=amd64

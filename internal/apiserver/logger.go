@@ -7,7 +7,7 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-// Logger ...
+// Logger function for init new zap logger instance
 func Logger(config *Config) *zap.Logger {
 	// Define log level
 	level := zap.NewAtomicLevel()
