@@ -10,7 +10,7 @@ Package `net/http` provides HTTP client and server implementations.
 
 ## Requirements
 
-- Create Go App CLI `v0.5.x` ([create-go-app/cli](https://github.com/create-go-app/cli))
+- Create Go App CLI `v0.5+` ([create-go-app/cli](https://github.com/create-go-app/cli))
 - Go `v1.11+` with Go Modules ([golang/download](https://golang.org/dl/))
 
 ### Optional
