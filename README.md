@@ -1,123 +1,86 @@
-<h1 align="center">net/http backend template<br/>for <a href="https://github.com/create-go-app">Create Go App CLI</a></h1>
+# Fiber backend template for [Create Go App CLI](https://github.com/create-go-app/cli)
 
-<img align="right" width="256px" src="https://golang.org/lib/godoc/images/go-logo-blue.svg" alt="Golang logo" />
+<img src="https://img.shields.io/badge/Go-1.11+-00ADD8?style=for-the-badge&logo=go" alt="go version" />&nbsp;<a href="https://gocover.io/github.com/create-go-app/net_http-go-template/pkg/apiserver" target="_blank"><img src="https://img.shields.io/badge/Go_Cover-49%25-success?style=for-the-badge&logo=none" alt="go cover" /></a>&nbsp;<a href="https://goreportcard.com/report/github.com/create-go-app/net_http-go-template" target="_blank"><img src="https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none" alt="go report" /></a>&nbsp;<img src="https://img.shields.io/badge/license-mit-red?style=for-the-badge&logo=none" alt="license" />
 
 Package `net` provides a portable interface for network I/O, including TCP/IP, UDP, domain name resolution, and Unix domain sockets. Although the package provides access to low-level networking primitives.
 
-Package `net/http` provides HTTP client and server implementations.
+Package [`net/http`](https://golang.org/pkg/net/http/) provides HTTP client and server implementations.
 
-📚 [Documentation](https://golang.org/pkg/net/http/)
+## ⚡️ Quick start
 
-## Requirements
+1. Create a new project:
 
-- Create Go App CLI `v0.5+` ([create-go-app/cli](https://github.com/create-go-app/cli))
-- Go `v1.11+` with Go Modules ([golang/download](https://golang.org/dl/))
+```bash
+cgapp create
+```
 
-### Optional
+2. Run project by this command:
 
-- Docker `v19.x` ([docker/onboarding](https://hub.docker.com/?overlay=onboarding))
+```bash
+task -s
+```
 
-## Used packages
+> ☝️ We're using `Taskfile` as task manager for running project on a local machine by default. If you've never heard of `Taskfile`, we recommend to read the [Docs](https://taskfile.dev/#/usage?id=getting-started) and use it, instead of `Makefile`.
 
-- [go-yaml/yaml](https://github.com/go-yaml/yaml) `v3.0.0`
-- [zap](https://go.uber.org/zap) `v1.13.0`
-- [gorilla/mux](https://github.com/gorilla/mux) `v1.7.3`
-- [json-iterator/go](https://github.com/json-iterator/go) `v1.1.9`
+## ✅ Used packages
 
-## Template structure
+- [gorilla/mux](https://github.com/gorilla/mux) `v1.7.4`
+- [go-yaml/yaml](https://github.com/go-yaml/yaml) `v2.3.0`
 
-```console
-foo@bar:~/net_http-go-template$ tree .
+## 🗄 Template structure
+
+```bash
 .
 ├── .dockerignore
 ├── .editorconfig
-├── .prettierignore
 ├── .gitignore
 ├── Dockerfile
-├── Makefile
-├── LICENSE
-├── README.md
+├── Taskfile.yml
 ├── go.mod
 ├── go.sum
-├── cmd
-│   └── apiserver
-│       └── main.go
+├── main.go
 ├── configs
 │   └── apiserver.yml
-└── internal
+├── static
+│   └── index.html
+└── pkg
     └── apiserver
-        ├── apiserver.go
-        ├── checker.go
         ├── config.go
-        ├── logger.go
-        ├── middleware.go
-        └── routes.go
+        ├── config_test.go
+        ├── error_checker.go
+        ├── error_checker_test.go
+        ├── new_server.go
+        ├── new_server_test.go
+        ├── routes.go
+        ├── utils.go
+        └── utils_test.go
 
-5 directories, 17 files
+4 directories, 17 files
 ```
 
-### Configs
-
-All server/database/logging/static configs included in one YAML file `./configs/apiserver.yml`:
+## ⚙️ Configuration
 
 ```yaml
+# ./configs/apiserver.yml
+
 # Server config
 server:
-    host: 127.0.0.1
-    port: 8080
-    timeout:
-        read: 15
-        write: 10
-        idle: 5
+  host: 0.0.0.0
+  port: 5000
 
 # Database config
 database:
-    host: 127.0.0.1
-    port: 5432
-    username: postgres
-    password: 1234
-
-# Logging config
-logging:
-    level: debug
+  host: 127.0.0.1
+  port: 5432
+  username: postgres
+  password: 1234
 
 # Static files config
 static:
-    path: /static
-
+  prefix: /
+  path: ./static
 ```
 
-### TODO (ASAP list)
+## ⚠️ License
 
-- Add more API endpoints
-- Add tests
-- Add jmoiron/sqlx (Postgres)
-- ...
-- You're feel free to send ideas to [issue](https://github.com/create-go-app/net_http-go-template/issues/new/choose) 😉
-
-## Developers
-
-- Idea and active development by [Vic Shóstak](https://github.com/koddr) (aka Koddr).
-
-## Project assistance
-
-If you want to say «thank you» or/and support active development `Create Go App`:
-
-1. Add a GitHub Star to project.
-2. Twit about project [on your Twitter](https://twitter.com/intent/tweet?text=Set%20up%20a%20new%20Go%20%28Golang%29%20full%20stack%20app%20by%20running%20one%20CLI%20command%21%26url%3Dhttps%3A%2F%2Fgithub.com%2Fcreate-go-app).
-3. Donate some money to project author via PayPal: [@paypal.me/koddr](https://paypal.me/koddr?locale.x=en_EN).
-4. Join DigitalOcean at our [referral link](https://m.do.co/c/b41859fa9b6e) (your profit is **$100** and we get $25).
-5. Become a sponsor.
-
-Thanks for your support! 😘 Together, we make this project better every day.
-
-### Sponsors
-
-| Logo                                                                                                                                                              | Sponsor description                                                                                                                 | URL                              |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| <img align="center" width="100px" src="https://raw.githubusercontent.com/create-go-app/cli/master/images/sponsors/1wa.co_logo.png" alt="True web artisans logo"/> | **True web artisans** — IT specialists around the world, who are ready to share their experience to solve your business objectives. | [https://1wa.co](https://1wa.co) |
-|                                                                                                                                                                   | <div align="center">💡 <a href="mailto:truewebartisans@gmail.com">Want to become a sponsor too?</a></div>                           |                                  |
-
-## License
-
-MIT
+MIT &copy; [Vic Shóstak](https://github.com/koddr) & [True web artisans](https://1wa.co/).
