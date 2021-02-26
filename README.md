@@ -17,10 +17,8 @@ cgapp create
 2. Run project by this command:
 
 ```bash
-task -s
+make run
 ```
-
-> ☝️ We're using `Taskfile` as task manager for running project on a local machine by default. If you've never heard of `Taskfile`, we recommend to read the [Docs](https://taskfile.dev/#/usage?id=getting-started) and use it, instead of `Makefile`.
 
 ## ✅ Used packages
 
@@ -35,7 +33,7 @@ task -s
 ├── .editorconfig
 ├── .gitignore
 ├── Dockerfile
-├── Taskfile.yml
+├── Makefile
 ├── go.mod
 ├── go.sum
 ├── main.go

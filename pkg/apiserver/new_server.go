@@ -78,7 +78,9 @@ func (s *APIServer) Start() {
 
 	// Doesn't block if no connections, but will otherwise wait
 	// until the timeout deadline.
-	server.Shutdown(ctx)
+	if err := server.Shutdown(ctx); err != nil {
+		log.Println(err)
+	}
 
 	// Optionally, you could run srv.Shutdown in a goroutine and block on
 	// <-ctx.Done() if your application should wait for other services
