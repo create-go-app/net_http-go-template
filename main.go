@@ -1,20 +1,18 @@
 package main
 
 import (
-	"github.com/create-go-app/net_http-go-template/pkg/apiserver"
+	"github.com/create-go-app/net_http-go-template/pkg/configs"
+	"github.com/create-go-app/net_http-go-template/pkg/utils"
+	"github.com/gorilla/mux"
 )
 
 func main() {
-	// Parse config path from environment variable.
-	configPath := apiserver.GetEnv("CONFIG_PATH", "configs/apiserver.yml")
+	// Initialize a new router.
+	router := mux.NewRouter()
 
-	// Create new config.
-	config, err := apiserver.NewConfig(configPath)
-	apiserver.ErrChecker(err)
-
-	// Create new server.
-	server := apiserver.NewServer(config)
+	// Register API routes.
+	server := configs.ServerConfig(router)
 
 	// Start API server.
-	server.Start()
+	utils.StartServerWithGracefulShutdown(server)
 }
