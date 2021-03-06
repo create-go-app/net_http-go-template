@@ -20,11 +20,11 @@ func PrivateRoutes(router *mux.Router) {
 	deleteUser := jwtProtected.Handler(http.HandlerFunc(controllers.DeleteUser))
 
 	// Routes for POST method:
-	router.Handle("/api/private/user", createUser).Methods("POST") // create user by ID
+	router.Handle("/api/private/user", createUser).Methods(http.MethodPost) // create user by ID
 
 	// Routes for PATCH method:
-	router.Handle("/api/private/user", updateUser).Methods("PATCH") // update user by ID
+	router.Handle("/api/private/user", updateUser).Methods(http.MethodPatch) // update user by ID
 
 	// Routes for DELETE method:
-	router.Handle("/api/private/user", deleteUser).Methods("DELETE") // delete user by ID
+	router.Handle("/api/private/user", deleteUser).Methods(http.MethodDelete) // delete user by ID
 }

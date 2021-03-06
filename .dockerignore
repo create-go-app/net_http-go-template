@@ -10,6 +10,5 @@ LICENSE
 # Folders
 .git/
 .github/
-.task/
-app/
+build/
 **/*_test.go

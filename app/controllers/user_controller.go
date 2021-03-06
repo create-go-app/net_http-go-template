@@ -71,8 +71,9 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object} models.User
 // @Router /api/public/user/{id} [get]
 func GetUser(w http.ResponseWriter, r *http.Request) {
-	// Define content type.
+	// Define content type and CORS.
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	// Catch user ID from URL.
 	id, err := uuid.Parse(r.URL.Query().Get("id"))
@@ -130,8 +131,9 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object} models.User
 // @Router /api/private/user [post]
 func CreateUser(w http.ResponseWriter, r *http.Request) {
-	// Define content type.
+	// Define content type and CORS.
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	// Get now time.
 	now := time.Now().Unix()
@@ -235,8 +237,9 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object} models.User
 // @Router /api/private/user [patch]
 func UpdateUser(w http.ResponseWriter, r *http.Request) {
-	// Define content type.
+	// Define content type and CORS.
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	// Get now time.
 	now := time.Now().Unix()
@@ -347,8 +350,9 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {string} string "ok"
 // @Router /api/private/user [delete]
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
-	// Define content type.
+	// Define content type and CORS.
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	// Get now time.
 	now := time.Now().Unix()
