@@ -14,31 +14,35 @@ func StartServerWithGracefulShutdown(server *http.Server) {
 	// Define waiting time.
 	var wait time.Duration
 
-	// Create channel for idle connections.
-	idleConnsClosed := make(chan struct{})
+	// Run our server in a goroutine so that it doesn't block.
+	go func() {
+		if err := server.ListenAndServe(); err != nil {
+			log.Println(err)
+		}
+	}()
+
+	c := make(chan os.Signal, 1)
+
+	// We'll accept graceful shutdowns when quit via SIGINT (Ctrl+C)
+	// SIGKILL, SIGQUIT or SIGTERM (Ctrl+/) will not be caught.
+	signal.Notify(c, os.Interrupt)
+
+	// Block until we receive our signal.
+	<-c
 
 	// Create a deadline to wait for.
 	ctx, cancel := context.WithTimeout(context.Background(), wait)
 	defer cancel()
 
-	go func() {
-		sigint := make(chan os.Signal, 1)
-		signal.Notify(sigint, os.Interrupt) // catch OS signals
-		<-sigint
-
-		// Received an interrupt signal, shutdown.
-		if err := server.Shutdown(ctx); err != nil {
-			// Error from closing listeners, or context timeout:
-			log.Printf("Oops... Server is not shutting down! Reason: %v", err)
-		}
-
-		close(idleConnsClosed)
-	}()
-
-	// Run server.
-	if err := server.ListenAndServe(); err != nil {
-		log.Printf("Oops... Server is not running! Reason: %v", err)
+	// Doesn't block if no connections, but will otherwise wait
+	// until the timeout deadline.
+	if err := server.Shutdown(ctx); err != nil {
+		log.Println(err)
 	}
 
-	<-idleConnsClosed
+	// Optionally, you could run srv.Shutdown in a goroutine and block on
+	// <-ctx.Done() if your application should wait for other services
+	// to finalize based on context cancellation.
+	log.Println("shutting down")
+	os.Exit(0)
 }

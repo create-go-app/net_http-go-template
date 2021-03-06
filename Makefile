@@ -30,7 +30,7 @@ migrate.force:
 	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" force $(version)
 
 docker.build:
-	docker build -t fiber-go-template .
+	docker build -t net_http-go-template .
 
 docker.run: docker.net_http docker.postgres
 
@@ -48,7 +48,9 @@ docker.postgres:
 	docker run --rm -d \
 		--name dev-postgres \
 		--network dev-network \
+		-e POSTGRES_USER=postgres \
 		-e POSTGRES_PASSWORD=password \
+		-e POSTGRES_DB=postgres \
 		-v ${HOME}/dev-postgres/data/:/var/lib/postgresql/data \
 		-p 5432:5432 \
 		postgres

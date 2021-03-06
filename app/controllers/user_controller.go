@@ -34,7 +34,7 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 			"msg":   err.Error(),
 		})
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Get all users.
@@ -48,7 +48,7 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 			"users": nil,
 		})
 		w.WriteHeader(http.StatusNotFound)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	payload, _ := json.Marshal(map[string]interface{}{
@@ -58,7 +58,7 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 		"users": users,
 	})
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(payload))
+	_, _ = w.Write([]byte(payload))
 }
 
 // GetUser func gets one user by given ID or 404 error.
@@ -83,7 +83,7 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 			"msg":   err.Error(),
 		})
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Create database connection.
@@ -95,7 +95,7 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 			"msg":   err.Error(),
 		})
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Get user by ID.
@@ -108,7 +108,7 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 			"user":  nil,
 		})
 		w.WriteHeader(http.StatusNotFound)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	payload, _ := json.Marshal(map[string]interface{}{
@@ -117,7 +117,7 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 		"user":  user,
 	})
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(payload))
+	_, _ = w.Write([]byte(payload))
 }
 
 // CreateUser func for creates a new user.
@@ -157,7 +157,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 			"msg":   err.Error(),
 		})
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Only user with `user:create` credential can create a new user profile.
@@ -173,7 +173,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 				"msg":   utils.ValidatorErrors(err),
 			})
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(payload))
+			_, _ = w.Write([]byte(payload))
 		}
 
 		// Create database connection.
@@ -185,7 +185,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 				"msg":   err.Error(),
 			})
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(payload))
+			_, _ = w.Write([]byte(payload))
 		}
 
 		// Set initialized default data for user:
@@ -203,7 +203,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 				"msg":   err.Error(),
 			})
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(payload))
+			_, _ = w.Write([]byte(payload))
 		}
 	} else {
 		// Return status 500 and database connection error.
@@ -213,7 +213,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 			"user":  nil,
 		})
 		w.WriteHeader(http.StatusForbidden)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	payload, _ := json.Marshal(map[string]interface{}{
@@ -222,7 +222,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 		"user":  user,
 	})
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(payload))
+	_, _ = w.Write([]byte(payload))
 }
 
 // UpdateUser func for updates user by given ID.
@@ -262,7 +262,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 			"msg":   err.Error(),
 		})
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Create database connection.
@@ -274,7 +274,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 			"msg":   err.Error(),
 		})
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Checking, if user with given ID is exists.
@@ -285,7 +285,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 			"msg":   "user not found",
 		})
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Only user with `user:update` credential can update user profile.
@@ -301,7 +301,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 				"msg":   utils.ValidatorErrors(err),
 			})
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(payload))
+			_, _ = w.Write([]byte(payload))
 		}
 
 		// Set user data to update:
@@ -315,7 +315,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 				"msg":   err.Error(),
 			})
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(payload))
+			_, _ = w.Write([]byte(payload))
 		}
 	} else {
 		// Return status 403 and permission denied error.
@@ -325,7 +325,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 			"user":  nil,
 		})
 		w.WriteHeader(http.StatusForbidden)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	payload, _ := json.Marshal(map[string]interface{}{
@@ -334,7 +334,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 		"user":  user,
 	})
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(payload))
+	_, _ = w.Write([]byte(payload))
 }
 
 // DeleteUser func for deletes user by given ID.
@@ -346,7 +346,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 // @Param id body string true "User ID"
 // @Success 200 {string} string "ok"
 // @Router /api/private/user [delete]
-func DeleteUser(w http.ResponseWriter, r *http.Request) error {
+func DeleteUser(w http.ResponseWriter, r *http.Request) {
 	// Define content type.
 	w.Header().Set("Content-Type", "application/json")
 
@@ -374,7 +374,7 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) error {
 			"msg":   err.Error(),
 		})
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Create database connection.
@@ -386,7 +386,7 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) error {
 			"msg":   err.Error(),
 		})
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Checking, if user with given ID is exists.
@@ -397,7 +397,7 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) error {
 			"msg":   "user not found",
 		})
 		w.WriteHeader(http.StatusNotFound)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
 	// Only user with `user:delete` credential can delete user profile.
@@ -410,7 +410,7 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) error {
 				"msg":   err.Error(),
 			})
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(payload))
+			_, _ = w.Write([]byte(payload))
 		}
 	} else {
 		// Return status 403 and permission denied error.
@@ -419,12 +419,13 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) error {
 			"msg":   "permission denied, check credentials or expiration time of your token",
 		})
 		w.WriteHeader(http.StatusForbidden)
-		w.Write([]byte(payload))
+		_, _ = w.Write([]byte(payload))
 	}
 
-	w.WriteHeader(http.StatusOK)
-	return json.NewEncoder(w).Encode(map[string]interface{}{
+	payload, _ := json.Marshal(map[string]interface{}{
 		"error": false,
 		"msg":   nil,
 	})
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write([]byte(payload))
 }
