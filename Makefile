@@ -32,7 +32,11 @@ migrate.force:
 docker.build:
 	docker build -t net_http-go-template .
 
-docker.run: docker.net_http docker.postgres
+docker.network:
+	docker network inspect dev-network >/dev/null 2>&1 || \
+	docker network create -d bridge dev-network
+
+docker.run: docker.network docker.net_http docker.postgres
 
 docker.stop:
 	docker stop dev-net_http dev-postgres

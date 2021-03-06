@@ -31,7 +31,10 @@ func main() {
 	routes.PrivateRoutes(router)
 	routes.SwaggerRoutes(router)
 
-	// Register API routes.
+	// Register middleware.
+	router.Use(mux.CORSMethodMiddleware(router)) // enable CORS
+
+	// Initialize server.
 	server := configs.ServerConfig(router)
 
 	// Start API server.
