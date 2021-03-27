@@ -14,8 +14,8 @@ Package [`net/http`](https://golang.org/pkg/net/http/) provides HTTP client and 
 cgapp create
 
 # Choose a backend framework:
-#   net/http
-# > Fiber
+# > net/http
+#   Fiber
 ```
 
 2. Rename `.env.example` to `.env` and fill it with your environment values.
