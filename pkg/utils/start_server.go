@@ -16,6 +16,7 @@ func StartServerWithGracefulShutdown(server *http.Server) {
 
 	// Run our server in a goroutine so that it doesn't block.
 	go func() {
+		log.Println("Server is starting...")
 		if err := server.ListenAndServe(); err != nil {
 			log.Println(err)
 		}
@@ -43,6 +44,6 @@ func StartServerWithGracefulShutdown(server *http.Server) {
 	// Optionally, you could run srv.Shutdown in a goroutine and block on
 	// <-ctx.Done() if your application should wait for other services
 	// to finalize based on context cancellation.
-	log.Println("shutting down")
+	log.Println("Server is shutting down...")
 	os.Exit(0)
 }
