@@ -8,6 +8,7 @@ Makefile
 LICENSE
 **/*.md
 **/*_test.go
+*.out
 
 # Folders
 .git/

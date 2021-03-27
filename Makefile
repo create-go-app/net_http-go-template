@@ -1,9 +1,9 @@
-.PHONY: clean test security build run
+.PHONY: clean test security build run swag
 
 APP_NAME = apiserver
 BUILD_DIR = $(PWD)/build
 MIGRATIONS_FOLDER = $(PWD)/platform/migrations
-DATABASE_URL = postgres://$(user):$(pass)@$(host)/$(table)?sslmode=disable
+DATABASE_URL = postgres://postgres:password@localhost/postgres?sslmode=disable
 
 clean:
 	rm -rf ./build
@@ -17,7 +17,7 @@ test: security
 build: clean test
 	CGO_ENABLED=0 go build -ldflags="-w -s" -o $(BUILD_DIR)/$(APP_NAME) main.go
 
-run: swag.init build
+run: swag build
 	$(BUILD_DIR)/$(APP_NAME)
 
 migrate.up:
@@ -36,12 +36,12 @@ docker.network:
 	docker network inspect dev-network >/dev/null 2>&1 || \
 	docker network create -d bridge dev-network
 
-docker.run: docker.network docker.net_http docker.postgres
+docker.run: docker.network docker.postgres swag docker.net_http migrate.up
 
 docker.stop:
 	docker stop dev-net_http dev-postgres
 
-docker.net_http:
+docker.net_http: docker.build
 	docker run --rm -d \
 		--name dev-net_http \
 		--network dev-network \
@@ -59,5 +59,5 @@ docker.postgres:
 		-p 5432:5432 \
 		postgres
 
-swag.init:
+swag:
 	swag init

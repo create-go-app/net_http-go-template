@@ -32,8 +32,68 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/api/private/user": {
+        "/v1/user": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update user.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "update user",
+                "parameters": [
+                    {
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "User status",
+                        "name": "user_status",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "User attributes",
+                        "name": "user_attrs",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UserAttrs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            },
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "description": "Create a new user.",
                 "consumes": [
                     "application/json"
@@ -42,7 +102,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Private"
+                    "User"
                 ],
                 "summary": "create a new user",
                 "parameters": [
@@ -66,6 +126,11 @@ var doc = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "description": "Delete user by given ID.",
                 "consumes": [
                     "application/json"
@@ -74,7 +139,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Private"
+                    "User"
                 ],
                 "summary": "delete user by given ID",
                 "parameters": [
@@ -96,41 +161,9 @@ var doc = `{
                         }
                     }
                 }
-            },
-            "patch": {
-                "description": "Update user.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Private"
-                ],
-                "summary": "update user",
-                "parameters": [
-                    {
-                        "description": "User ID",
-                        "name": "id",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/models.User"
-                        }
-                    }
-                }
             }
         },
-        "/api/public/user/{id}": {
+        "/v1/user/{id}": {
             "get": {
                 "description": "Get user by given ID.",
                 "consumes": [
@@ -140,7 +173,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Public"
+                    "User"
                 ],
                 "summary": "get user by given ID",
                 "parameters": [
@@ -162,7 +195,7 @@ var doc = `{
                 }
             }
         },
-        "/api/public/users": {
+        "/v1/users": {
             "get": {
                 "description": "Get all exists users.",
                 "consumes": [
@@ -172,7 +205,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Public"
+                    "Users"
                 ],
                 "summary": "get all exists users",
                 "responses": {
@@ -257,9 +290,9 @@ type swaggerInfo struct {
 var SwaggerInfo = swaggerInfo{
 	Version:     "1.0",
 	Host:        "",
-	BasePath:    "/",
+	BasePath:    "/api",
 	Schemes:     []string{},
-	Title:       "Golang net/http Template API",
+	Title:       "API",
 	Description: "This is an auto-generated API Docs for Golang net/http Template.",
 }
 

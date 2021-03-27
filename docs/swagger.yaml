@@ -1,4 +1,4 @@
-basePath: /
+basePath: /api
 definitions:
   models.User:
     properties:
@@ -38,10 +38,10 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: Golang net/http Template API
+  title: API
   version: "1.0"
 paths:
-  /api/private/user:
+  /v1/user:
     delete:
       consumes:
       - application/json
@@ -60,30 +60,11 @@ paths:
           description: ok
           schema:
             type: string
+      security:
+      - ApiKeyAuth: []
       summary: delete user by given ID
       tags:
-      - Private
-    patch:
-      consumes:
-      - application/json
-      description: Update user.
-      parameters:
-      - description: User ID
-        in: body
-        name: id
-        required: true
-        schema:
-          type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/models.User'
-      summary: update user
-      tags:
-      - Private
+      - User
     post:
       consumes:
       - application/json
@@ -102,10 +83,47 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.User'
+      security:
+      - ApiKeyAuth: []
       summary: create a new user
       tags:
-      - Private
-  /api/public/user/{id}:
+      - User
+    put:
+      consumes:
+      - application/json
+      description: Update user.
+      parameters:
+      - description: User ID
+        in: body
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: User status
+        in: body
+        name: user_status
+        required: true
+        schema:
+          type: integer
+      - description: User attributes
+        in: body
+        name: user_attrs
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserAttrs'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      security:
+      - ApiKeyAuth: []
+      summary: update user
+      tags:
+      - User
+  /v1/user/{id}:
     get:
       consumes:
       - application/json
@@ -125,8 +143,8 @@ paths:
             $ref: '#/definitions/models.User'
       summary: get user by given ID
       tags:
-      - Public
-  /api/public/users:
+      - User
+  /v1/users:
     get:
       consumes:
       - application/json
@@ -142,7 +160,7 @@ paths:
             type: array
       summary: get all exists users
       tags:
-      - Public
+      - Users
 securityDefinitions:
   ApiKeyAuth:
     in: header
