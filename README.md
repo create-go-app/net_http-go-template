@@ -14,31 +14,24 @@ Package [`net/http`](https://golang.org/pkg/net/http/) provides HTTP client and 
 cgapp create
 
 # Choose a backend framework:
-# > net/http
-#   Fiber
+#   net/http
+# > Fiber
 ```
 
-2. Run Docker container with database (_by default, for PostgreSQL_):
+2. Rename `.env.example` to `.env` and fill it with your environment values.
+3. Install [Docker](https://www.docker.com/get-started) and the following useful Go tools to your system:
+
+- [golang-migrate/migrate](https://github.com/golang-migrate/migrate#cli-usage) for apply migrations
+- [github.com/swaggo/swag](https://github.com/swaggo/swag) for auto-generating Swagger API docs
+- [github.com/securego/gosec](https://github.com/securego/gosec) for checking Go security issues
+
+4. Run project by this command:
 
 ```bash
-make docker.postgres
+make docker.run
 ```
 
-3. Apply migrations:
-
-```bash
-make migration.up user=<db_user> pass=<db_pass> host=<db_host> table=<db_table>
-```
-
-4. Rename `.env.example` to `.env` and fill it with your environment values.
-
-5. Run project by this command:
-
-```bash
-make run
-```
-
-6. Go to API Docs page (Swagger): [localhost:5000/swagger/index.html](http://localhost:5000/swagger/index.html).
+5. Go to API Docs page (Swagger): [127.0.0.1:5000/swagger/index.html](http://127.0.0.1:5000/swagger/index.html)
 
 ## 📦 Used packages
 
