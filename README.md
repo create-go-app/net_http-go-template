@@ -14,16 +14,16 @@ Package [`net/http`](https://golang.org/pkg/net/http/) provides HTTP client and 
 cgapp create
 
 # Choose a backend framework:
-#   net/http
-# > Fiber
+# > net/http
+#   Fiber
 ```
 
 2. Rename `.env.example` to `.env` and fill it with your environment values.
 3. Install [Docker](https://www.docker.com/get-started) and the following useful Go tools to your system:
 
-- [golang-migrate/migrate](https://github.com/golang-migrate/migrate#cli-usage) for apply migrations
-- [github.com/swaggo/swag](https://github.com/swaggo/swag) for auto-generating Swagger API docs
-- [github.com/securego/gosec](https://github.com/securego/gosec) for checking Go security issues
+   - [golang-migrate/migrate](https://github.com/golang-migrate/migrate#cli-usage) for apply migrations
+   - [github.com/swaggo/swag](https://github.com/swaggo/swag) for auto-generating Swagger API docs
+   - [github.com/securego/gosec](https://github.com/securego/gosec) for checking Go security issues
 
 4. Run project by this command:
 
@@ -31,20 +31,22 @@ cgapp create
 make docker.run
 ```
 
-5. Go to API Docs page (Swagger): [127.0.0.1:5000/swagger/index.html](http://127.0.0.1:5000/swagger/index.html)
+5. Go to API Docs page (Swagger): [0.0.0.0:5000/swagger/index.html](http://0.0.0.0:5000/swagger/index.html)
+
+![Screenshot](https://user-images.githubusercontent.com/11155743/112716623-76bc0800-8ef8-11eb-80db-48edcbdacf36.png)
 
 ## 📦 Used packages
 
 | Name                                                                  | Version   | Type       |
 | --------------------------------------------------------------------- | --------- | ---------- |
-| [net/http](https://golang.org/pkg/net/http/)                          | `v1.16.0` | core       |
+| [net/http](https://golang.org/pkg/net/http/)                          | `v1.16.2` | core       |
 | [auth0/go-jwt-middleware](https://github.com/auth0/go-jwt-middleware) | `v1.0.0`  | middleware |
 | [swaggo/http-swagger](https://github.com/swaggo/http-swagger)         | `v1.0.0`  | middleware |
 | [stretchr/testify](https://github.com/stretchr/testify)               | `v1.7.0`  | tests      |
 | [dgrijalva/jwt-go](https://github.com/dgrijalva/jwt-go)               | `v3.2.0`  | auth       |
 | [joho/godotenv](https://github.com/joho/godotenv)                     | `v1.3.0`  | config     |
 | [jmoiron/sqlx](https://github.com/jmoiron/sqlx)                       | `v1.3.1`  | database   |
-| [jackc/pgx](https://github.com/jackc/pgx)                             | `v4.10.1` | database   |
+| [jackc/pgx](https://github.com/jackc/pgx)                             | `v4.11.0` | database   |
 | [swaggo/swag](https://github.com/swaggo/swag)                         | `v1.7.0`  | utils      |
 | [google/uuid](https://github.com/google/uuid)                         | `v1.2.0`  | utils      |
 | [go-playground/validator](https://github.com/go-playground/validator) | `v10.4.1` | utils      |
@@ -107,4 +109,4 @@ SMTP_PORT=25
 
 ## ⚠️ License
 
-MIT &copy; [Vic Shóstak](https://github.com/koddr) & [True web artisans](https://1wa.co/).
+Apache 2.0 &copy; [Vic Shóstak](https://shostak.dev/) & [True web artisans](https://1wa.co/).

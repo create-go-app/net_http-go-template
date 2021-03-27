@@ -11,7 +11,7 @@ import (
 
 // SwaggerRoutes func for describe group of Swagger routes.
 func SwaggerRoutes(router *mux.Router) {
-	//
+	// Build Swagger route.
 	getSwagger := httpSwagger.Handler(
 		httpSwagger.URL("http://"+os.Getenv("SERVER_URL")+"/swagger/doc.json"),
 		httpSwagger.DeepLinking(true),
