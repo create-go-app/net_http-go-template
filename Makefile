@@ -11,6 +11,9 @@ clean:
 security:
 	gosec -quiet ./...
 
+linter:
+	golangci-lint run
+
 test: security
 	go test -cover ./...
 
