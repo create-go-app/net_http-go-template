@@ -3,7 +3,7 @@
 APP_NAME = apiserver
 BUILD_DIR = $(PWD)/build
 MIGRATIONS_FOLDER = $(PWD)/platform/migrations
-DATABASE_URL = postgres://postgres:password@localhost/postgres?sslmode=disable
+DATABASE_URL = postgres://postgres:password@cgapp-postgres/postgres?sslmode=disable
 
 clean:
 	rm -rf ./build
@@ -42,18 +42,18 @@ docker.network:
 docker.run: docker.network docker.postgres swag docker.net_http migrate.up
 
 docker.stop:
-	docker stop dev-net_http dev-postgres
+	docker stop cgapp-net_http cgapp-postgres
 
 docker.net_http: docker.build
 	docker run --rm -d \
-		--name dev-net_http \
+		--name cgapp-net_http \
 		--network dev-network \
 		-p 5000:5000 \
 		net_http-go-template
 
 docker.postgres:
 	docker run --rm -d \
-		--name dev-postgres \
+		--name cgapp-postgres \
 		--network dev-network \
 		-e POSTGRES_USER=postgres \
 		-e POSTGRES_PASSWORD=password \
