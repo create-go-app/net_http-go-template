@@ -49,7 +49,7 @@ make docker.run
 | [jackc/pgx](https://github.com/jackc/pgx)                             | `v4.11.0` | database   |
 | [swaggo/swag](https://github.com/swaggo/swag)                         | `v1.7.0`  | utils      |
 | [google/uuid](https://github.com/google/uuid)                         | `v1.2.0`  | utils      |
-| [go-playground/validator](https://github.com/go-playground/validator) | `v10.5.0` | utils      |
+| [go-playground/validator](https://github.com/go-playground/validator) | `v10.6.0` | utils      |
 
 ## 🗄 Template structure
 
@@ -97,7 +97,7 @@ JWT_SECRET_KEY="secret"
 JWT_REFRESH_KEY="refresh"
 
 # Database settings:
-DB_HOST="localhost"
+DB_HOST="cgapp-postgres"
 DB_PORT=5432
 DB_USER="postgres"
 DB_PASSWORD="password"

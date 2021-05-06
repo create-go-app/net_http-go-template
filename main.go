@@ -6,7 +6,7 @@ import (
 	"github.com/create-go-app/net_http-go-template/pkg/utils"
 	"github.com/gorilla/mux"
 
-	_ "github.com/create-go-app/net_http-go-template/docs" //
+	_ "github.com/create-go-app/net_http-go-template/docs" // load Swagger docs
 	_ "github.com/joho/godotenv/autoload"                  // load .env file automatically
 )
 
