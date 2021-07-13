@@ -39,8 +39,9 @@ make docker.run
 
 | Name                                                                  | Version   | Type       |
 | --------------------------------------------------------------------- | --------- | ---------- |
-| [net/http](https://golang.org/pkg/net/http/)                          | `v1.16.4` | core       |
-| [auth0/go-jwt-middleware](https://github.com/auth0/go-jwt-middleware) | `v1.0.0`  | middleware |
+| [net/http](https://golang.org/pkg/net/http/)                          | `v1.16.6` | core       |
+| [gorilla/mux](https://github.com/gorilla/mux)                         | `v1.8.0`  | router     |
+| [auth0/go-jwt-middleware](https://github.com/auth0/go-jwt-middleware) | `v1.0.1`  | middleware |
 | [swaggo/http-swagger](https://github.com/swaggo/http-swagger)         | `v1.0.0`  | middleware |
 | [stretchr/testify](https://github.com/stretchr/testify)               | `v1.7.0`  | tests      |
 | [dgrijalva/jwt-go](https://github.com/dgrijalva/jwt-go)               | `v3.2.0`  | auth       |
@@ -48,8 +49,8 @@ make docker.run
 | [jmoiron/sqlx](https://github.com/jmoiron/sqlx)                       | `v1.3.4`  | database   |
 | [jackc/pgx](https://github.com/jackc/pgx)                             | `v4.11.0` | database   |
 | [swaggo/swag](https://github.com/swaggo/swag)                         | `v1.7.0`  | utils      |
-| [google/uuid](https://github.com/google/uuid)                         | `v1.2.0`  | utils      |
-| [go-playground/validator](https://github.com/go-playground/validator) | `v10.6.1` | utils      |
+| [google/uuid](https://github.com/google/uuid)                         | `v1.3.0`  | utils      |
+| [go-playground/validator](https://github.com/go-playground/validator) | `v10.7.0` | utils      |
 
 ## 🗄 Template structure
 
