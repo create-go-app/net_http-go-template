@@ -9,7 +9,7 @@ import (
 	"github.com/create-go-app/net_http-go-template/app/validators"
 	"github.com/create-go-app/net_http-go-template/pkg/utils"
 	"github.com/create-go-app/net_http-go-template/platform/database"
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
 	"github.com/google/uuid"
 )
 
