@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/golang-jwt/jwt"
+	"github.com/golang-jwt/jwt/v4"
 )
 
 // GenerateNewJWTAccessToken func for generate a new JWT access (private) token

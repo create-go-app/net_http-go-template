@@ -2,7 +2,7 @@ package configs
 
 import (
 	jwtmiddleware "github.com/auth0/go-jwt-middleware"
-	"github.com/golang-jwt/jwt"
+	"github.com/golang-jwt/jwt/v4"
 )
 
 // JWTConfig func for
