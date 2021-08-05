@@ -183,8 +183,8 @@ github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5Cc
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/swaggo/files v0.0.0-20190704085106-630677cd5c14 h1:PyYN9JH5jY9j6av01SpfRMb+1DWg/i3MbGOKPxJ2wjM=
 github.com/swaggo/files v0.0.0-20190704085106-630677cd5c14/go.mod h1:gxQT6pBGRuIGunNf/+tSOB5OHvguWi8Tbt82WOkf35E=
-github.com/swaggo/http-swagger v1.0.0 h1:ksYgVBCYmAaxFsGVGojlPROgYfiQQSllETTWMtHJHTo=
-github.com/swaggo/http-swagger v1.0.0/go.mod h1:cKIcshBU9yEAnfWv6ZzVKSsEf8h5ozxB8/zHQWyOQ/8=
+github.com/swaggo/http-swagger v1.1.1 h1:7cBYOcF/TS0Nx5uA6oOP9DfFV5RYogpazzK1IUmQUII=
+github.com/swaggo/http-swagger v1.1.1/go.mod h1:cKIcshBU9yEAnfWv6ZzVKSsEf8h5ozxB8/zHQWyOQ/8=
 github.com/swaggo/swag v1.7.0 h1:5bCA/MTLQoIqDXXyHfOpMeDvL9j68OY/udlK4pQoo4E=
 github.com/swaggo/swag v1.7.0/go.mod h1:BdPIL73gvS9NBsdi7M1JOxLvlbfvNRaBP8m6WT6Aajo=
 github.com/urfave/cli/v2 v2.3.0/go.mod h1:LJmUH05zAU44vOAcrfzZQKsZbVcdbOG8rtL3/XcUArI=
