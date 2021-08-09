@@ -50,7 +50,7 @@ make docker.run
 | [jackc/pgx](https://github.com/jackc/pgx)                             | `v4.13.0` | database   |
 | [swaggo/swag](https://github.com/swaggo/swag)                         | `v1.7.0`  | utils      |
 | [google/uuid](https://github.com/google/uuid)                         | `v1.3.0`  | utils      |
-| [go-playground/validator](https://github.com/go-playground/validator) | `v10.8.0` | utils      |
+| [go-playground/validator](https://github.com/go-playground/validator) | `v10.9.0` | utils      |
 
 ## 🗄 Template structure
 
