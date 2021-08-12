@@ -13,5 +13,5 @@ require (
 	github.com/jmoiron/sqlx v1.3.4
 	github.com/joho/godotenv v1.3.0
 	github.com/swaggo/http-swagger v1.1.1
-	github.com/swaggo/swag v1.7.0
+	github.com/swaggo/swag v1.7.1
 )
