@@ -39,7 +39,7 @@ make docker.run
 
 | Name                                                                  | Version   | Type       |
 | --------------------------------------------------------------------- | --------- | ---------- |
-| [net/http](https://golang.org/pkg/net/http/)                          | `v1.16.7` | core       |
+| [net/http](https://golang.org/pkg/net/http/)                          | `v1.17.0` | core       |
 | [gorilla/mux](https://github.com/gorilla/mux)                         | `v1.8.0`  | router     |
 | [auth0/go-jwt-middleware](https://github.com/auth0/go-jwt-middleware) | `v1.0.1`  | middleware |
 | [swaggo/http-swagger](https://github.com/swaggo/http-swagger)         | `v1.1.1`  | middleware |
