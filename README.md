@@ -1,6 +1,6 @@
 # net/http backend template for [Create Go App CLI](https://github.com/create-go-app/cli)
 
-<img src="https://img.shields.io/badge/Go-1.16+-00ADD8?style=for-the-badge&logo=go" alt="go version" />&nbsp;<a href="https://goreportcard.com/report/github.com/create-go-app/net_http-go-template" target="_blank"><img src="https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none" alt="go report" /></a>&nbsp;<img src="https://img.shields.io/badge/license-mit-red?style=for-the-badge&logo=none" alt="license" />
+<img src="https://img.shields.io/badge/Go-1.17+-00ADD8?style=for-the-badge&logo=go" alt="go version" />&nbsp;<a href="https://goreportcard.com/report/github.com/create-go-app/net_http-go-template" target="_blank"><img src="https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none" alt="go report" /></a>&nbsp;<img src="https://img.shields.io/badge/license-mit-red?style=for-the-badge&logo=none" alt="license" />
 
 Package `net` provides a portable interface for network I/O, including TCP/IP, UDP, domain name resolution, and Unix domain sockets. Although the package provides access to low-level networking primitives.
 
@@ -39,7 +39,7 @@ make docker.run
 
 | Name                                                                  | Version   | Type       |
 | --------------------------------------------------------------------- | --------- | ---------- |
-| [net/http](https://golang.org/pkg/net/http/)                          | `v1.16.7` | core       |
+| [net/http](https://golang.org/pkg/net/http/)                          | `latest`  | core       |
 | [gorilla/mux](https://github.com/gorilla/mux)                         | `v1.8.0`  | router     |
 | [auth0/go-jwt-middleware](https://github.com/auth0/go-jwt-middleware) | `v1.0.1`  | middleware |
 | [swaggo/http-swagger](https://github.com/swaggo/http-swagger)         | `v1.1.1`  | middleware |
@@ -48,7 +48,7 @@ make docker.run
 | [joho/godotenv](https://github.com/joho/godotenv)                     | `v1.3.0`  | config     |
 | [jmoiron/sqlx](https://github.com/jmoiron/sqlx)                       | `v1.3.4`  | database   |
 | [jackc/pgx](https://github.com/jackc/pgx)                             | `v4.13.0` | database   |
-| [swaggo/swag](https://github.com/swaggo/swag)                         | `v1.7.1`  | utils      |
+| [swaggo/swag](https://github.com/swaggo/swag)                         | `v1.7.2`  | utils      |
 | [google/uuid](https://github.com/google/uuid)                         | `v1.3.0`  | utils      |
 | [go-playground/validator](https://github.com/go-playground/validator) | `v10.9.0` | utils      |
 
