@@ -44,11 +44,11 @@ make docker.run
 | [auth0/go-jwt-middleware](https://github.com/auth0/go-jwt-middleware) | `v1.0.1`  | middleware |
 | [swaggo/http-swagger](https://github.com/swaggo/http-swagger)         | `v1.1.1`  | middleware |
 | [stretchr/testify](https://github.com/stretchr/testify)               | `v1.7.0`  | tests      |
-| [golang-jwt/jwt](https://github.com/golang-jwt/jwt)                   | `v4.0.0`  | auth       |
-| [joho/godotenv](https://github.com/joho/godotenv)                     | `v1.3.0`  | config     |
+| [golang-jwt/jwt](https://github.com/golang-jwt/jwt)                   | `v4.1.0`  | auth       |
+| [joho/godotenv](https://github.com/joho/godotenv)                     | `v1.4.0`  | config     |
 | [jmoiron/sqlx](https://github.com/jmoiron/sqlx)                       | `v1.3.4`  | database   |
 | [jackc/pgx](https://github.com/jackc/pgx)                             | `v4.13.0` | database   |
-| [swaggo/swag](https://github.com/swaggo/swag)                         | `v1.7.2`  | utils      |
+| [swaggo/swag](https://github.com/swaggo/swag)                         | `v1.7.3`  | utils      |
 | [google/uuid](https://github.com/google/uuid)                         | `v1.3.0`  | utils      |
 | [go-playground/validator](https://github.com/go-playground/validator) | `v10.9.0` | utils      |
 
