@@ -45,5 +45,4 @@ func StartServerWithGracefulShutdown(server *http.Server) {
 	// <-ctx.Done() if your application should wait for other services
 	// to finalize based on context cancellation.
 	log.Println("Server is shutting down...")
-	os.Exit(0)
 }

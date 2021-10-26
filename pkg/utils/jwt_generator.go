@@ -41,17 +41,17 @@ func GenerateNewJWTAccessToken(credentials []string, id string) (string, error) 
 // GenerateNewJWTRefreshToken func for generate a new JWT refresh (public) token.
 func GenerateNewJWTRefreshToken() (string, error) {
 	// Create a new SHA256 hash.
-	sha256 := sha256.New()
+	hash := sha256.New()
 
 	// Create a new now date and time string with salt.
 	refresh := os.Getenv("JWT_REFRESH_KEY") + time.Now().String()
 
 	// See: https://pkg.go.dev/io#Writer.Write
-	_, err := sha256.Write([]byte(refresh))
+	_, err := hash.Write([]byte(refresh))
 	if err != nil {
 		// Return error, it refresh token generation failed.
 		return "", err
 	}
 
-	return hex.EncodeToString(sha256.Sum(nil)), nil
+	return hex.EncodeToString(hash.Sum(nil)), nil
 }
