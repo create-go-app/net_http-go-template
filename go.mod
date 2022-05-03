@@ -11,7 +11,7 @@ require (
 	github.com/jackc/pgx/v4 v4.16.0
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/joho/godotenv v1.4.0
-	github.com/swaggo/http-swagger v1.2.7
+	github.com/swaggo/http-swagger v1.2.8
 	github.com/swaggo/swag v1.8.1
 )
 
