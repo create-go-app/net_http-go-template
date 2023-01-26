@@ -12,7 +12,7 @@ require (
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/joho/godotenv v1.4.0
 	github.com/swaggo/http-swagger v1.3.3
-	github.com/swaggo/swag v1.8.9
+	github.com/swaggo/swag v1.8.10
 )
 
 require (
