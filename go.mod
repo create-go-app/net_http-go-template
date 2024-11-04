@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/auth0/go-jwt-middleware v1.0.1
 	github.com/go-playground/validator/v10 v10.22.1
-	github.com/golang-jwt/jwt/v4 v4.4.3
+	github.com/golang-jwt/jwt/v4 v4.5.1
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/mux v1.8.1
 	github.com/jackc/pgx/v4 v4.18.3
